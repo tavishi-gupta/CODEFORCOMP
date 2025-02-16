@@ -7,7 +7,6 @@ extern drivetrain Drivetrain;
 extern controller Controller1;
 extern motor Intake;
 extern motor Ramp;
-extern motor Lift;
 extern digital_out MogoMech;
 
 /**
