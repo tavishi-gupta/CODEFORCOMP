@@ -39,102 +39,171 @@ void pre_auton(void) {  // Initializing Robot Configuration. DO NOT REMOVE!
 
 
 void autonomous(void) {
-  // Autonomous code here (not modified for now)
-  //left side
-  /*Drivetrain.setDriveVelocity(75, percent);  // Set the drivetrain speed
-  Drivetrain.driveFor(forward, 30, inches);   // Drive forward for 24 inches
-  Drivetrain.stop(brakeType::brake);
+  //skills auton
+  Drivetrain.setDriveVelocity(75, percent);
   wait(1, sec);
-  MogoMech.set(true);
-  wait(1, sec);
-  Drivetrain.driveFor(forward, 6, inches);
-  Drivetrain.stop(brakeType::brake);
-  wait(1, sec);
-  Intake.spin(reverse, 100, pct);
-  Ramp.spin(forward, 80, pct);
-  wait(1, sec);
-  Drivetrain.turnFor(right, 90, degrees);
-  wait(1, sec);
-  Drivetrain.driveFor(forward, 22, inches);
-  Drivetrain.stop(brakeType::brake);
-  wait(1, sec);
-  Intake.spin(reverse, 100, pct);
-  Ramp.spin(forward, 80, pct);
-  wait(1, sec);
-  Drivetrain.driveFor(forward, 8, inches);
-  Drivetrain.stop(brakeType::brake);*/
 
-  //right side
-  //Drivetrain.setDriveVelocity(75, percent);  // Set the drivetrain speed
-  //Drivetrain.driveFor(forward, 30, inches);   // Drive forward for 24 inches
-  //Drivetrain.stop(brakeType::brake);
-  //wait(1, sec);
-  //MogoMech.set(true);
-  //wait(1, sec);
-  //Drivetrain.driveFor(forward, 6, inches);
-  //Drivetrain.stop(brakeType::brake);
-  //Intake.spin(reverse, 100, pct);
-  //Ramp.spin(forward, 80, pct);
-  //wait(1, sec);
-  //wait(1, sec);
-  //Drivetrain.turnFor(left, 90, degrees);
-  //wait(1, sec);
-  //Drivetrain.driveFor(forward, 22, inches);
-  //Drivetrain.stop(brakeType::brake);
-  //wait(1, sec);
-  //Intake.spin(reverse, 100, pct);
-  //Ramp.spin(forward, 80, pct);
-  //wait(1, sec);
-  //Drivetrain.driveFor(forward, 8, inches);
-  //Drivetrain.stop(brakeType::brake);
+  Intake.spin(forward, 60, pct); //Score alliance point
+  Ramp.spin(reverse, 60, pct);
+
+  Drivetrain.driveFor(forward, 600, mm); // drive to first tile
+  Drivetrain.stop(brakeType::brake);
+  wait(1, sec);
+
+  Intake.stop(brakeType::brake);
+  Ramp.stop(brakeType::brake);
+
+  Drivetrain.turnFor(right, 90, degrees); //turn right
+  wait(1, sec);
+
+  Drivetrain.driveFor(reverse, 650, mm); // drive to into mogo mech
+  Drivetrain.stop(brakeType::brake);
+  wait(1, sec);
+
+  MogoMechActive = true;
+  MogoMech.set(MogoMechActive);
+  wait(1, sec);
+
+  Drivetrain.turnFor(left, 180, degrees); //turn left
+  wait(1, sec);
+
+  Intake.spin(forward, 60, pct); //To intake both rings
+  Ramp.spin(reverse, 60, pct);
+
+  Drivetrain.driveFor(forward, 550, mm); // drive to into first ring
+  Drivetrain.stop(brakeType::brake);
+  wait(1, sec);
+
+  Drivetrain.driveFor(forward, 275, mm); // drive to into second ring
+  Drivetrain.stop(brakeType::brake);
+  wait(1, sec);
+
+  Drivetrain.turnFor(right, 90, degrees); //turn right
+  wait(1, sec);
+
+  Intake.stop(brakeType::brake);
+  Ramp.stop(brakeType::brake);
+  
+  Drivetrain.driveFor(reverse, 300, mm); // drive back
+  Drivetrain.stop(brakeType::brake);
+  wait(1, sec);
+
+  Drivetrain.turnFor(right, 35, degrees); //turn right
+  wait(1, sec);
+
+  Drivetrain.driveFor(reverse, 300, mm); // drive back into corner
+  Drivetrain.stop(brakeType::brake);
+  wait(1, sec);
+
+  MogoMechActive = false; //unclamp mobile goal
+  MogoMech.set(MogoMechActive);
+  wait(1, sec);
+
+  Drivetrain.driveFor(forward, 600, mm); // drive forward back into path. Recalculate this value
+  Drivetrain.stop(brakeType::brake);
+  wait(1, sec);
+
+  Drivetrain.turnFor(left, 125, degrees); //turn left to backwards position to clamp mogo mech
+  wait(1, sec);
+
+  Drivetrain.driveFor(reverse, 1900, mm); // drive backwards into the mogo mech
+  Drivetrain.stop(brakeType::brake);
+  wait(1, sec);
+
+  MogoMechActive = true; //clamp mobile goal
+  MogoMech.set(MogoMechActive);
+  wait(1, sec);
+
+  Drivetrain.turnFor(right, 180, degrees); //turn right back into forward position
+  wait(1, sec);
+
+  Intake.spin(forward, 60, pct); //To intake both rings
+  Ramp.spin(reverse, 60, pct);
+
+  Drivetrain.driveFor(forward, 550, mm); // drive to intake first ring
+  Drivetrain.stop(brakeType::brake);
+  wait(1, sec);
+
+  Drivetrain.driveFor(forward, 275, mm); // drive to intake second ring
+  Drivetrain.stop(brakeType::brake);
+  wait(1, sec);
+
+  Drivetrain.turnFor(left, 90, degrees); //turn left
+  wait(1, sec);
+
+  Drivetrain.driveFor(reverse, 300, mm); // drive back
+  Drivetrain.stop(brakeType::brake);
+  wait(1, sec);
+
+  Drivetrain.turnFor(left, 35, degrees); //turn left
+  wait(1, sec);
+
+  Drivetrain.driveFor(reverse, 300, mm); // drive back into corner
+  Drivetrain.stop(brakeType::brake);
+  wait(1, sec);
+
+  MogoMechActive = false; //unclamp mobile goal
+  MogoMech.set(MogoMechActive);
+  wait(1, sec);
+
+  Drivetrain.driveFor(forward, 600, mm); // drive forward back into path. Recalculate this value
+  Drivetrain.stop(brakeType::brake);
+  wait(1, sec);
+
 }
 
 /*---------------------------------------------------------------------------*/
 /*                              User Control Task                            */
 /*---------------------------------------------------------------------------*/
+static bool intakeRampPressed = false;  // Track the button press state for Intake/Ramp control
+static bool intakeReversePressed = false;  // Track the button press state for Intake/Ramp control
 
 void usercontrol(void) {
-  static bool mogoPressed = false;  // Track the button press state for MogoMech
-  static bool intakeRampPressed = false;  // Track the button press state for Intake/Ramp control
   
   while (true) {  // Keep looping to continuously check the controller input
     // Check if ButtonA (MogoMech) was pressed and toggle the piston state
-    if (Controller1.ButtonA.pressing() && !mogoPressed) {
-      mogoPressed = true;  // Mark the button press state
-      MogoMechActive = !MogoMechActive;  // Toggle the MogoMech state
-      MogoMech.set(MogoMechActive);  // Update MogoMech state
-    } else if (!Controller1.ButtonA.pressing()) {
-      mogoPressed = false;  // Reset the button state when it's released
+    if (Controller1.ButtonA.pressing()) {
+      while(Controller1.ButtonA.pressing()){
+        wait(10, msec);
+      }
+      MogoMechActive = !MogoMechActive;
+      MogoMech.set(MogoMechActive);
     }
 
     // Check if ButtonB was pressed and toggle the motors for intake/ramp (forward/reverse)
-    if (Controller1.ButtonB.pressing() && !intakeRampPressed) {
-      intakeRampPressed = true;  // Mark the button press state
-      motorsRunning = !motorsRunning;  // Toggle the motor state
-      if (motorsRunning) {
-        Intake.spin(forward);  // Spin intake forward
-        Ramp.spin(reverse);  // Spin ramp in reverse
-      } else {
-        Intake.stop();  // Stop intake
-        Ramp.stop();  // Stop ramp
+    if (Controller1.ButtonX.pressing()) {
+      intakeReversePressed = true;  // Mark the button press state
+      while (Controller1.ButtonX.pressing()) {
+        wait(10, msec);
       }
-    } else if (!Controller1.ButtonB.pressing()) {
-      intakeRampPressed = false;  // Reset the button state when it's released
+      intakeReversePressed = !intakeReversePressed;
+
+      if (intakeReversePressed) {
+        Ramp.spin(reverse, 70, pct);
+        Intake.spin(forward, 70, pct);
+        intakeReversePressed = false;
+      } else {
+        Intake.stop(brakeType::brake);
+        Ramp.stop(brakeType::brake);
+      }
     }
 
     // Check if ButtonY was pressed and toggle the motors for intake/ramp (reverse/forward)
     if (Controller1.ButtonY.pressing() && !intakeRampPressed) {
-      intakeRampPressed = true;  // Mark the button press state
-      motorsRunning = !motorsRunning;  // Toggle the motor state
-      if (motorsRunning) {
-        Intake.spin(reverse);  // Spin intake reverse
-        Ramp.spin(forward);  // Spin ramp forward
-      } else {
-        Intake.stop();  // Stop intake
-        Ramp.stop();  // Stop ramp
+      intakeReversePressed = true;  // Mark the button press state
+      while (Controller1.ButtonY.pressing()) {
+        wait(10, msec);
       }
-    } else if (!Controller1.ButtonY.pressing()) {
-      intakeRampPressed = false;  // Reset the button state when it's released
+      intakeReversePressed = !intakeReversePressed;
+
+      if (intakeReversePressed) {
+        Ramp.spin(reverse, 60, pct);
+        Intake.spin(forward, 60, pct);
+        intakeReversePressed = false;
+      } else {
+        Intake.stop(brakeType::brake);
+        Ramp.stop(brakeType::brake);
+      }
     }
     
     wait(10, msec);  // Short delay for debouncing and task looping
