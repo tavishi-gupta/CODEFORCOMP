@@ -19,7 +19,6 @@ controller Controller1 = controller(primary);
 digital_out MogoMech = digital_out(Brain.ThreeWirePort.A);
 motor Intake = motor(PORT3, ratio18_1, false);
 motor Ramp = motor(PORT8, ratio18_1, false);
-motor Lift = motor(PORT14, ratio18_1, false);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable
@@ -45,7 +44,7 @@ int rc_auto_loop_function_Controller1() {
         // check if the left motor has already been stopped
         if (DrivetrainLNeedsToBeStopped_Controller1) {
           // stop the left drive motor
-          LeftDriveSmart.stop();
+          LeftDriveSmart.stop(coast);
           // tell the code that the left motor has been stopped
           DrivetrainLNeedsToBeStopped_Controller1 = false;
         }
@@ -58,7 +57,7 @@ int rc_auto_loop_function_Controller1() {
         // check if the right motor has already been stopped
         if (DrivetrainRNeedsToBeStopped_Controller1) {
           // stop the right drive motor
-          RightDriveSmart.stop();
+          RightDriveSmart.stop(coast);
           // tell the code that the right motor has been stopped
           DrivetrainRNeedsToBeStopped_Controller1 = false;
         }
