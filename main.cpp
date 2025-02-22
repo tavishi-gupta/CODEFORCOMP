@@ -193,8 +193,8 @@ void usercontrol(void) {
       intakeReversePressed = !intakeReversePressed;
 
       if (intakeReversePressed) {
-        Ramp.spin(reverse, 50, pct);
-        Intake.spin(forward, 50, pct);
+        Ramp.spin(reverse, 70, pct);
+        Intake.spin(forward, 70, pct);
       } else {
         Intake.stop(brakeType::brake);
         Ramp.stop(brakeType::brake);
@@ -209,8 +209,8 @@ void usercontrol(void) {
       intakeReversePressed = !intakeReversePressed;
 
       if (intakeReversePressed) {
-        Ramp.spin(forward, 70, pct);
-        Intake.spin(reverse, 70, pct);
+        Ramp.spin(forward, 50, pct);
+        Intake.spin(reverse, 50, pct);
       } else {
         Intake.stop(brakeType::brake);
         Ramp.stop(brakeType::brake);
