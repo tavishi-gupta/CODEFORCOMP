@@ -16,7 +16,7 @@ using namespace vex;
 competition Competition;
 
 // Define global instances of motors and other devices
-bool MogoMechActive = false;
+bool MogoMechActive = true;
 bool motorsRunning = false;  // Tracks the motor position toggle
 
 // Motor for the rotational sensor (assumed to be a motor with a rotational sensor)
@@ -60,7 +60,7 @@ void autonomous(void) {
   Drivetrain.stop(brakeType::brake);
   wait(1, sec);
 
-  MogoMechActive = true;
+  MogoMechActive = false;
   MogoMech.set(MogoMechActive);
   wait(1, sec);
 
@@ -95,7 +95,7 @@ void autonomous(void) {
   Drivetrain.stop(brakeType::brake);
   wait(1, sec);
 
-  MogoMechActive = false; //unclamp mobile goal
+  MogoMechActive = true; //unclamp mobile goal
   MogoMech.set(MogoMechActive);
   wait(1, sec);
 
@@ -110,7 +110,7 @@ void autonomous(void) {
   Drivetrain.stop(brakeType::brake);
   wait(1, sec);
 
-  MogoMechActive = true; //clamp mobile goal
+  MogoMechActive = false; //clamp mobile goal
   MogoMech.set(MogoMechActive);
   wait(1, sec);
 
@@ -142,7 +142,7 @@ void autonomous(void) {
   Drivetrain.stop(brakeType::brake);
   wait(1, sec);
 
-  MogoMechActive = false; //unclamp mobile goal
+  MogoMechActive = true; //unclamp mobile goal
   MogoMech.set(MogoMechActive);
   wait(1, sec);
 
@@ -172,7 +172,7 @@ void usercontrol(void) {
 
     // Check if ButtonB was pressed and toggle the motors for intake/ramp (forward/reverse)
     if (Controller1.ButtonX.pressing()) {
-      intakeReversePressed = true;  // Mark the button press state
+        // Mark the button press state
       while (Controller1.ButtonX.pressing()) {
         wait(10, msec);
       }
@@ -181,7 +181,6 @@ void usercontrol(void) {
       if (intakeReversePressed) {
         Ramp.spin(reverse, 70, pct);
         Intake.spin(forward, 70, pct);
-        intakeReversePressed = false;
       } else {
         Intake.stop(brakeType::brake);
         Ramp.stop(brakeType::brake);
@@ -190,16 +189,14 @@ void usercontrol(void) {
 
     // Check if ButtonY was pressed and toggle the motors for intake/ramp (reverse/forward)
     if (Controller1.ButtonY.pressing() && !intakeRampPressed) {
-      intakeReversePressed = true;  // Mark the button press state
       while (Controller1.ButtonY.pressing()) {
         wait(10, msec);
       }
       intakeReversePressed = !intakeReversePressed;
 
       if (intakeReversePressed) {
-        Ramp.spin(reverse, 60, pct);
-        Intake.spin(forward, 60, pct);
-        intakeReversePressed = false;
+        Ramp.spin(forward, 60, pct);
+        Intake.spin(reverse, 60, pct);
       } else {
         Intake.stop(brakeType::brake);
         Ramp.stop(brakeType::brake);
