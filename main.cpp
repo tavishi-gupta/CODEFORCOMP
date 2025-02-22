@@ -41,114 +41,128 @@ void pre_auton(void) {  // Initializing Robot Configuration. DO NOT REMOVE!
 void autonomous(void) {
   //skills auton
   Drivetrain.setDriveVelocity(75, percent);
+  wait(20, msec);
+
+  Intake.spin(reverse, 60, pct); //Score alliance point
+  Ramp.spin(forward, 60, pct);
   wait(1, sec);
 
-  Intake.spin(forward, 60, pct); //Score alliance point
-  Ramp.spin(reverse, 60, pct);
-
-  Drivetrain.driveFor(forward, 600, mm); // drive to first tile
+  Drivetrain.driveFor(reverse, 380, mm); // drive to first tile
   Drivetrain.stop(brakeType::brake);
-  wait(1, sec);
+  wait(20, msec);
 
   Intake.stop(brakeType::brake);
   Ramp.stop(brakeType::brake);
 
-  Drivetrain.turnFor(right, 90, degrees); //turn right
-  wait(1, sec);
+  Drivetrain.turnFor(left, 152, degrees); //turn right
+  wait(20, msec);
 
-  Drivetrain.driveFor(reverse, 650, mm); // drive to into mogo mech
+  Drivetrain.setDriveVelocity(25, percent);
+  wait(20, msec);
+
+  Drivetrain.driveFor(forward, 650, mm); // drive to into mogo mech
   Drivetrain.stop(brakeType::brake);
-  wait(1, sec);
+  wait(20, msec);
 
   MogoMechActive = false;
   MogoMech.set(MogoMechActive);
-  wait(1, sec);
+  wait(20, msec);
 
-  Drivetrain.turnFor(left, 180, degrees); //turn left
-  wait(1, sec);
+  Drivetrain.setDriveVelocity(75, percent);
+  wait(20, msec);
 
-  Intake.spin(forward, 60, pct); //To intake both rings
-  Ramp.spin(reverse, 60, pct);
+  Drivetrain.turnFor(left, 310, degrees); //turn left
+  wait(20, msec);
 
-  Drivetrain.driveFor(forward, 550, mm); // drive to into first ring
+  Intake.spin(reverse, 60, pct); //To intake both rings
+  Ramp.spin(forward, 60, pct);
+
+  Drivetrain.setDriveVelocity(25, percent);
+  wait(20, msec);
+
+  Drivetrain.driveFor(reverse, 900, mm); // drive to into first ring
   Drivetrain.stop(brakeType::brake);
   wait(1, sec);
 
-  Drivetrain.driveFor(forward, 275, mm); // drive to into second ring
+  Drivetrain.driveFor(reverse, 525, mm); // drive to into first ring
   Drivetrain.stop(brakeType::brake);
-  wait(1, sec);
+  wait(20, msec);
 
-  Drivetrain.turnFor(right, 90, degrees); //turn right
-  wait(1, sec);
+  Drivetrain.turnFor(right, 415, degrees); //turn right
+  wait(20, msec);
 
   Intake.stop(brakeType::brake);
   Ramp.stop(brakeType::brake);
-  
-  Drivetrain.driveFor(reverse, 300, mm); // drive back
-  Drivetrain.stop(brakeType::brake);
-  wait(1, sec);
+  wait(20, msec);
 
-  Drivetrain.turnFor(right, 35, degrees); //turn right
-  wait(1, sec);
-
-  Drivetrain.driveFor(reverse, 300, mm); // drive back into corner
+  Drivetrain.driveFor(forward, 475, mm); // drive back
   Drivetrain.stop(brakeType::brake);
-  wait(1, sec);
+  wait(20, msec);
 
   MogoMechActive = true; //unclamp mobile goal
   MogoMech.set(MogoMechActive);
+  wait(20, msec);
+
+  Drivetrain.driveFor(reverse, 475, mm); // drive forward back into path. Recalculate this value
+  Drivetrain.stop(brakeType::brake);
+  wait(20, msec);
+
+  Drivetrain.turnFor(left, 95, degrees); //turn left to backwards position to clamp mogo mech
   wait(1, sec);
 
-  Drivetrain.driveFor(forward, 600, mm); // drive forward back into path. Recalculate this value
+  Drivetrain.driveFor(reverse, 2500, mm); // drive backwards into the mogo mech
   Drivetrain.stop(brakeType::brake);
   wait(1, sec);
 
-  Drivetrain.turnFor(left, 125, degrees); //turn left to backwards position to clamp mogo mech
-  wait(1, sec);
+  Drivetrain.setDriveVelocity(25, percent);
+  wait(20, msec);
 
-  Drivetrain.driveFor(reverse, 1900, mm); // drive backwards into the mogo mech
+  Drivetrain.driveFor(forward, 650, mm); // drive to into mogo mech
   Drivetrain.stop(brakeType::brake);
-  wait(1, sec);
+  wait(20, msec);
 
-  MogoMechActive = false; //clamp mobile goal
+  MogoMechActive = false;
   MogoMech.set(MogoMechActive);
-  wait(1, sec);
+  wait(20, msec);
 
-  Drivetrain.turnFor(right, 180, degrees); //turn right back into forward position
-  wait(1, sec);
+  Drivetrain.setDriveVelocity(75, percent);
+  wait(20, msec);
 
-  Intake.spin(forward, 60, pct); //To intake both rings
-  Ramp.spin(reverse, 60, pct);
+  Drivetrain.turnFor(right, 310, degrees); //turn left
+  wait(20, msec);
 
-  Drivetrain.driveFor(forward, 550, mm); // drive to intake first ring
+  Intake.spin(reverse, 60, pct); //To intake both rings
+  Ramp.spin(forward, 60, pct);
+
+  Drivetrain.setDriveVelocity(25, percent);
+  wait(20, msec);
+
+  Drivetrain.driveFor(reverse, 900, mm); // drive to into first ring
   Drivetrain.stop(brakeType::brake);
   wait(1, sec);
 
-  Drivetrain.driveFor(forward, 275, mm); // drive to intake second ring
+  Drivetrain.driveFor(reverse, 525, mm); // drive to into first ring
   Drivetrain.stop(brakeType::brake);
-  wait(1, sec);
+  wait(20, msec);
 
-  Drivetrain.turnFor(left, 90, degrees); //turn left
-  wait(1, sec);
+  Drivetrain.turnFor(left, 415, degrees); //turn right
+  wait(20, msec);
 
-  Drivetrain.driveFor(reverse, 300, mm); // drive back
+  Intake.stop(brakeType::brake);
+  Ramp.stop(brakeType::brake);
+  wait(20, msec);
+
+  Drivetrain.driveFor(forward, 475, mm); // drive back
   Drivetrain.stop(brakeType::brake);
-  wait(1, sec);
-
-  Drivetrain.turnFor(left, 35, degrees); //turn left
-  wait(1, sec);
-
-  Drivetrain.driveFor(reverse, 300, mm); // drive back into corner
-  Drivetrain.stop(brakeType::brake);
-  wait(1, sec);
+  wait(20, msec);
 
   MogoMechActive = true; //unclamp mobile goal
   MogoMech.set(MogoMechActive);
-  wait(1, sec);
+  wait(20, msec);
 
-  Drivetrain.driveFor(forward, 600, mm); // drive forward back into path. Recalculate this value
+  Drivetrain.driveFor(reverse, 475, mm); // drive forward back into path. Recalculate this value
   Drivetrain.stop(brakeType::brake);
-  wait(1, sec);
+  wait(20, msec);
 
 }
 
@@ -179,8 +193,8 @@ void usercontrol(void) {
       intakeReversePressed = !intakeReversePressed;
 
       if (intakeReversePressed) {
-        Ramp.spin(reverse, 70, pct);
-        Intake.spin(forward, 70, pct);
+        Ramp.spin(reverse, 50, pct);
+        Intake.spin(forward, 50, pct);
       } else {
         Intake.stop(brakeType::brake);
         Ramp.stop(brakeType::brake);
@@ -195,8 +209,8 @@ void usercontrol(void) {
       intakeReversePressed = !intakeReversePressed;
 
       if (intakeReversePressed) {
-        Ramp.spin(forward, 60, pct);
-        Intake.spin(reverse, 60, pct);
+        Ramp.spin(forward, 70, pct);
+        Intake.spin(reverse, 70, pct);
       } else {
         Intake.stop(brakeType::brake);
         Ramp.stop(brakeType::brake);
